@@ -6,7 +6,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 
-public class DataProviderImpl implements DataProvider{
+public class DataProviderImpl implements DataProvider {
 
     private ApiService apiService;
 
