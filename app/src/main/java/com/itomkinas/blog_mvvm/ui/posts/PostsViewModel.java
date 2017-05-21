@@ -9,7 +9,6 @@ import com.itomkinas.blog_mvvm.api.DataProvider;
 import com.itomkinas.blog_mvvm.api.models.Post;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;

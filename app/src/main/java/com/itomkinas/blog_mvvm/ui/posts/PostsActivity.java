@@ -4,12 +4,14 @@ import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.itomkinas.blog_mvvm.MainApplication;
 import com.itomkinas.blog_mvvm.R;
 import com.itomkinas.blog_mvvm.api.models.Post;
 import com.itomkinas.blog_mvvm.databinding.ActivityPostsBinding;
+import com.itomkinas.blog_mvvm.databinding.ItemPostBinding;
 
 import java.util.List;
 
@@ -30,6 +32,11 @@ public class PostsActivity extends AppCompatActivity {
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_posts);
         dataBinding.setViewModel(postsViewModel);
         postsViewModel.loadPosts();
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        dataBinding.list.setLayoutManager(llm);
+        dataBinding.list.setAdapter(new PostsAdapter());
     }
 
     @Override
@@ -40,7 +47,9 @@ public class PostsActivity extends AppCompatActivity {
 
     @BindingAdapter("app:items")
     public static void setItems(RecyclerView listView, List<Post> items) {
-        // TODO: 5/21/17 Implement post list
+        PostsAdapter adapter = (PostsAdapter) listView.getAdapter();
+        if (adapter != null) {
+            adapter.setPosts(items);
+        }
     }
-
 }
