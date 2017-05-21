@@ -1,13 +1,15 @@
 package com.itomkinas.blog_mvvm;
 
 import com.itomkinas.blog_mvvm.api.ApiModule;
+import com.itomkinas.blog_mvvm.ui.UiModule;
+import com.itomkinas.blog_mvvm.ui.posts.MainActivity;
 
 import javax.inject.Singleton;
 
 import dagger.Component;
 
 @Singleton
-@Component(modules = {ApiModule.class})
+@Component(modules = {ApiModule.class, UiModule.class})
 public interface AppComponent {
 
     void inject(MainActivity mainActivity);

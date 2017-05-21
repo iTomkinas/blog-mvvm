@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,6 +25,12 @@ public class ApiModule {
 
     @Provides
     @Singleton
+    DataProvider providesDataProvider(ApiService apiService) {
+        return new DataProviderImpl(apiService);
+    }
+
+    @Provides
+    @Singleton
     ApiService provideApiService(Retrofit retrofit) {
         return retrofit.create(ApiService.class);
     }
@@ -33,7 +40,6 @@ public class ApiModule {
     SharedPreferences providesSharedPreferences(Application application) {
         return PreferenceManager.getDefaultSharedPreferences(application);
     }
-
 
     @Provides
     @Singleton
@@ -55,6 +61,8 @@ public class ApiModule {
     @Provides
     @Singleton
     OkHttpClient provideOkHttpClient() {
-        return new OkHttpClient();
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.HEADERS);
+        return new OkHttpClient.Builder().addInterceptor(logging).build();
     }
 }

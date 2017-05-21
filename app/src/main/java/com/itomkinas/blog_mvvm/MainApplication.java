@@ -4,6 +4,7 @@ import android.app.Application;
 import android.support.annotation.NonNull;
 
 import com.itomkinas.blog_mvvm.api.ApiModule;
+import com.itomkinas.blog_mvvm.ui.UiModule;
 
 public class MainApplication extends Application {
 
@@ -21,6 +22,7 @@ public class MainApplication extends Application {
     private void initDagger() {
         appComponent = DaggerAppComponent.builder()
                 .apiModule(new ApiModule(getString(R.string.api_base_url)))
+                .uiModule(new UiModule())
                 .build();
     }
 
