@@ -1,5 +1,6 @@
 package com.itomkinas.blog_mvvm.api;
 
+import com.itomkinas.blog_mvvm.api.models.Comment;
 import com.itomkinas.blog_mvvm.api.models.Post;
 
 import java.util.List;
@@ -11,4 +12,7 @@ public interface ApiService {
 
 	@GET("posts")
 	Observable<List<Post>> getPosts();
+
+	@GET("comments")
+	Observable<List<Comment>> getComments();
 }

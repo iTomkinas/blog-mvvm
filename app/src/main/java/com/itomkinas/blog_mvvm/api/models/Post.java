@@ -1,6 +1,8 @@
 package com.itomkinas.blog_mvvm.api.models;
 
-public class Post {
+import java.io.Serializable;
+
+public class Post implements Serializable {
 
     private Long id;
     private Long userId;

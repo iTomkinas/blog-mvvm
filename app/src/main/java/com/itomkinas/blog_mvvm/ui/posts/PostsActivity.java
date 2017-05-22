@@ -11,7 +11,6 @@ import com.itomkinas.blog_mvvm.MainApplication;
 import com.itomkinas.blog_mvvm.R;
 import com.itomkinas.blog_mvvm.api.models.Post;
 import com.itomkinas.blog_mvvm.databinding.ActivityPostsBinding;
-import com.itomkinas.blog_mvvm.databinding.ItemPostBinding;
 
 import java.util.List;
 
